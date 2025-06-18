@@ -1,4 +1,5 @@
-FROM nvidia/cuda:12.9.1-cudnn-runtime-ubuntu24.04
+FROM nvidia/cuda:12.6.3-base-ubuntu24.04
+#FROM nvidia/cuda:12.9.1-cudnn-runtime-ubuntu24.04
 
 RUN apt update && apt install -y --no-install-recommends \
   zip \
