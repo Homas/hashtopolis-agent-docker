@@ -1,0 +1,21 @@
+services:
+
+  hashtopolis-agent:
+    init: true
+    restart: always
+    container_name: hashtopolis-agent
+    image: "ghcr.io/homas/hashtopolis-agent-docker:latest"
+    security_opt:
+      - "label=type:nvidia_container_t"
+    environment:
+      HASHTOPOLIS_URL: $HASHTOPOLIS_URL
+      HASTOPOLIS_VOUCHER: $HASTOPOLIS_VOUCHER
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
+    entrypoint: ["python3"]
+    command: ["/root/agent-python/hashtopolis.zip", "--url", "$HASHTOPOLIS_URL", "--voucher", "$HASTOPOLIS_VOUCHER"]

@@ -8,9 +8,8 @@ RUN apt update && apt install -y --no-install-recommends \
   python3-requests \
   pciutils \
   curl && \
-  rm -rf /var/lib/apt/lists/*
-
-CMD mkdir /root/agent-python
+  rm -rf /var/lib/apt/lists/* && \
+  mkdir /root/agent-python
 
 WORKDIR /root/agent-python
 
@@ -23,5 +22,5 @@ RUN git clone https://github.com/hashtopolis/agent-python.git && \
 # https://github.com/Milz0/hashtopolis-hashcat-vast
 # https://nikita-guliaev.medium.com/clustering-hashcat-with-hashtopolis-for-distributed-cloud-computing-55f964a56804
 # onstart-script
-# cd agent-python
+# cd /root/agent-python
 # python3 hashtopolis.zip --url server_api --voucher voucher_id
