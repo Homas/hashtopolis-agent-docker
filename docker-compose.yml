@@ -7,6 +7,9 @@ services:
     image: "ghcr.io/homas/hashtopolis-agent-docker:latest"
     security_opt:
       - "label=type:nvidia_container_t"
+    volumes:
+      - "./config.json:/root/agent-python/config.json"
+      - "./lock.pid:/root/agent-python/lock.pid"
     environment:
       HASHTOPOLIS_URL: $HASHTOPOLIS_URL
       HASTOPOLIS_VOUCHER: $HASTOPOLIS_VOUCHER
