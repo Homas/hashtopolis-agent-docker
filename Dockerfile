@@ -22,7 +22,7 @@ RUN git clone https://github.com/hashtopolis/agent-python.git && \
   mv hashtopolis.zip /root/ && \
   cd ../ && rm -R agent-python
 
-COPY onstart.sh /root/
+COPY --chmod=0755 onstart.sh /root/
 
 # https://github.com/Milz0/hashtopolis-hashcat-vast
 # https://nikita-guliaev.medium.com/clustering-hashcat-with-hashtopolis-for-distributed-cloud-computing-55f964a56804
