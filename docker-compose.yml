@@ -8,8 +8,7 @@ services:
     security_opt:
       - "label=type:nvidia_container_t"
     volumes:
-      - "./config.json:/root/agent-python/config.json"
-      - "./lock.pid:/root/agent-python/lock.pid"
+      - "./runtime/:/root/agent-python/"
     environment:
       HASHTOPOLIS_URL: $HASHTOPOLIS_URL
       HASTOPOLIS_VOUCHER: $HASTOPOLIS_VOUCHER
@@ -20,5 +19,4 @@ services:
             - driver: nvidia
               device_ids: ['0']
               capabilities: [gpu]
-    entrypoint: ["python3"]
-    command: ["/root/agent-python/hashtopolis.zip", "--url", "$HASHTOPOLIS_URL", "--voucher", "$HASTOPOLIS_VOUCHER"]
+    entrypoint: ["onstart.sh"]
